@@ -6,8 +6,6 @@
 void List_swap(ListNode *node_1,ListNode *node_2){
 
   ListNode *temp_node = node_1;
-
-
   node_1 = node_2;
   node_2 = temp_node;
 
