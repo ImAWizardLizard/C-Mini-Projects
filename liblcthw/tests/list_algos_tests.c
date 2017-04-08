@@ -48,7 +48,7 @@ char *test_bubble_sort(){
   mu_assert(rc == 0,"Bubble sort failed");
   mu_assert(is_sorted(words),"Words are not sorted after bubble sort");
 
-  List_clear_destroy(words);
+  List_destroy(words);
 
   // Should work on an empty list
   words = List_create(words);
@@ -56,7 +56,7 @@ char *test_bubble_sort(){
   mu_assert(rc == 0,"Bubble sort failed on an empty list");
   mu_assert(is_sorted(words),"Words should be sorted if list is empty");
   
-  List_clear_destroy(words);
+  List_destroy(words);
 
   return NULL;
 
@@ -73,9 +73,9 @@ char *test_merge_sort(){
 
   List *res2 = List_merge_sort(res,(List_compare) strcmp);
   mu_assert(is_sorted(res),"Should still be sorted after merge sort");
-  List_clear_destroy(res2);
-  List_clear_destroy(res);
-  List_clear_destroy(words);
+  List_destroy(res2);
+  List_destroy(res);
+  List_destroy(words);
 
   return NULL;
 }
@@ -86,7 +86,7 @@ char *all_tests(){
   mu_suite_start();
 
   mu_run_test(test_bubble_sort);
-  //mu_run_test(test_merge_sort);
+  mu_run_test(test_merge_sort);
 
 
   return NULL;

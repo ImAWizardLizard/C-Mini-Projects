@@ -5,10 +5,14 @@
 
 void List_swap(ListNode *node_1,ListNode *node_2){
 
+  check(node_1 != NULL && node_2 != NULL,"Nodes to swap are invalid.");
+
   void *temp_value = node_1->value;
   node_1->value = node_2->value;
   node_2->value = temp_value;
 
+error: //fall through
+  return;
 }
 
 int List_bubble_sort(List *words,List_compare cmp){
@@ -40,39 +44,80 @@ error:
 }
 
 
-List *List_merge(List *left, List *right){
+List *List_merge(List *left, List *right,List_compare cmp){
 
+  List *result = List_create();
+  check_mem(result);
 
+  while(List_count(left) > 0 && List_count(right) > 0){
 
+    if(cmp(List_first(left),List_first(right)) <= 0){
+      List_push(result,left->first);
+      left->count--;
+      List_shift(left);
+    }else{
+      List_push(result,right->first);
+      right->count--;
+      List_shift(right);
+    }
+  }
 
+  while(left->count > 0){
+    List_push(result,left->first);
+    left->count--;
+    List_shift(left);
+  }
+
+  while(right->count > 0){
+    List_push(result,right->first);
+    right->count--;
+    List_shift(right);
+  }
+
+  return result;
+error:
+  return NULL;
 }
 
 List *List_merge_sort(List *words, List_compare cmp){
 
   check(words != NULL,"List is invalid.");
 
-  int i = 0;
-  int length = words->count;
-  if(length <=1) return words;
+  if(List_count(words) <= 1) return words;
 
-  List *left = calloc(1,sizeof(List));
-  List *right = calloc(1,sizeof(List));
+  List *result = NULL;
+
+  List *left = List_create();
+  List *right = List_create();
+
+  check_mem(left);
+  check_mem(right);
+
+  int middle = List_count(words)/2;
 
   LIST_FOREACH(words,first,next,cur){
-    if(i < (length/2)){
+    if(middle > 0){
       List_push(left,cur->value);
     }else{
       List_push(right,cur->value);
     }
-    i++;
+
+    middle--;
   }
 
-  List_merge_sort(left,cmp);
-  List_merge_sort(right,cmp);
+  List *sorted_left = List_merge_sort(left,cmp);
+  List *sorted_right = List_merge_sort(right,cmp);
 
+  if(sorted_left != left) List_destroy(left);
+  if(sorted_right != right) List_destroy(right);
 
-  return List_merge(left,right);
+  result = List_merge(sorted_left,sorted_right,cmp);
+
+  List_destroy(sorted_left);
+  List_destroy(sorted_right);
+
+  return result;
 
 error:
   return NULL;
-
+}

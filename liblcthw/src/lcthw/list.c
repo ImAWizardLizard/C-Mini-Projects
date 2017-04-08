@@ -8,7 +8,7 @@ List *List_create(){
 
 }
 
-void List_clear_destroy(List *list){
+void List_destroy(List *list){
 
   check(list != NULL,"Invalid list.");
 

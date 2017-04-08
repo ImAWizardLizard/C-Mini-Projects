@@ -27,7 +27,7 @@ List *List_create();
 
 // function which free's the memory allocated for the list and  clears its
 // values
-void List_clear_destroy(List *list);
+void List_destroy(List *list);
 
 
 // macro functions which return basic values from a list

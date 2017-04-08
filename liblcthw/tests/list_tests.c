@@ -24,9 +24,9 @@ char *test_create(){
 
 char *test_destroy(){
 
-  List_clear_destroy(list);
-  List_clear_destroy(list_2);
-  List_clear_destroy(list_3);
+  List_destroy(list);
+  List_destroy(list_2);
+  List_destroy(list_3);
   return NULL;
 }
 

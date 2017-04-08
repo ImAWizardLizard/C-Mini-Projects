@@ -13,7 +13,7 @@ List	src/lcthw/list.h	/^typedef struct List{$/;"	s
 List	src/lcthw/list.h	/^} List;$/;"	t	typeref:struct:List
 ListNode	src/lcthw/list.h	/^typedef struct ListNode{$/;"	s
 ListNode	src/lcthw/list.h	/^} ListNode;$/;"	t	typeref:struct:ListNode
-List_clear_destroy	src/lcthw/list.c	/^void List_clear_destroy(List *list){$/;"	f
+List_destroy	src/lcthw/list.c	/^void List_destroy(List *list){$/;"	f
 List_copy	src/lcthw/list.c	/^void List_copy(List *to, List *from){$/;"	f
 List_count	src/lcthw/list.h	34;"	d
 List_create	src/lcthw/list.c	/^List *List_create(){$/;"	f
