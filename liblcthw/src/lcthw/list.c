@@ -103,38 +103,12 @@ error:
 
 void List_join(List *list_1,List *list_2){
 
-
   check(list_1 != NULL && list_2 != NULL,"Lists is invalid.");
   check(list_1->count > 0 && list_2->count > 0,"List counts are zero");
 
-  // Either use copy (List_push) method or just have pointers at either ends of
-  // the lists be reassigned
-  //
-  // downsides of copying is that it takes longer, depending on the size of the
-  // list, whilst just altering the pointers would change the reference points,
-  // not having to loop the whole list, the downside to altering the pointers
-  // is that list_2 still has access to the joined list, which is what is not
-  // intended for as altering someting in list_2 could alter something in
-  // list_2 and vice versa
-
-  // copy method
-
   LIST_FOREACH(list_2,first,next,cur){
-
     List_push(list_1,cur->value);
-
   }
-
-  // pointer method 
-
-  /*
-  list_1->last->next = list_2->first;
-  list_2->first->prev = list_1->last;
-
-  list_1->last = list_2->last;
-
-  list_1->count += list_2->count;
-  */
 
 error:
   return;
@@ -169,37 +143,23 @@ error:
   return;
 }
 
-void List_split(List *list,List *list_2){
+void List_split(List *list,List *list_1,List *list_2){
 
   check(list != NULL,"Invalid list");
+  check(list_1 != NULL && list_2 != NULL,"Invalid lists");
   check(list->count > 1,"List is not big enough to split.");
 
-  size_t length = (int)((list->count/2));
-  size_t index = 1;
+  int middle = List_count(list)/2;
   
   LIST_FOREACH(list,first,next,cur){
     
-   if(index == length){
-
-    list_2->first = cur->next;
-    list_2->last = list->last;
-    list_2->count = list->count - length;
-
-    list->last = cur;
-    list->last->next = NULL;
-    list->count = length;
-
-    break;
-   } 
-
-   index++; 
+   if(middle > 0){
+    List_push(list_1,cur->value);
+   }else{
+    List_push(list_2,cur->value);
+   }
+    middle--;
   }
-
-
-  // if size of either nodes is one, then makes it itself its own first node
-  // and last node
-  // must re-assign counts, meant to be inefficent i guess
-  
 
 error:
   return;

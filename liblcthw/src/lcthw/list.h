@@ -56,7 +56,7 @@ void List_join(List *list_1, List *list_2);
 
 // A function which given a list, it will put the first half in list and the
 // second half in list_2, list_2 should be empty
-void List_split(List *list, List *list_2);
+void List_split(List *list,List *list_1, List *list_2);
 
 // copys a list
 void List_copy(List *to,List *from);

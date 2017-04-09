@@ -51,7 +51,10 @@ error:
 }
 
 
-List *List_merge(List *left, List *right,List_compare cmp){
+inline List *List_merge(List *left, List *right,List_compare cmp){
+
+  check(left != NULL && right != NULL,"Lists are invalid.");
+  check(cmp != NULL,"Invalid function callback.");
 
   List *result = List_create();
   check_mem(result);
@@ -60,25 +63,25 @@ List *List_merge(List *left, List *right,List_compare cmp){
 
     if(cmp(List_first(left),List_first(right)) <= 0){
       List_push(result,left->first);
-      left->count--;
       List_shift(left);
+      left->count--;
     }else{
       List_push(result,right->first);
-      right->count--;
       List_shift(right);
+      right->count--;
     }
   }
 
   while(left->count > 0){
     List_push(result,left->first);
-    left->count--;
     List_shift(left);
+    left->count--;
   }
 
   while(right->count > 0){
     List_push(result,right->first);
-    right->count--;
     List_shift(right);
+    right->count--;
   }
 
   return result;
@@ -89,6 +92,7 @@ error:
 List *List_merge_sort(List *words, List_compare cmp){
 
   check(words != NULL,"List is invalid.");
+  check(cmp != NULL,"Invalid function callback.");
 
   if(List_count(words) <= 1) return words;
 
@@ -100,17 +104,7 @@ List *List_merge_sort(List *words, List_compare cmp){
   check_mem(left);
   check_mem(right);
 
-  int middle = List_count(words)/2;
-
-  LIST_FOREACH(words,first,next,cur){
-    if(middle > 0){
-      List_push(left,cur->value);
-    }else{
-      List_push(right,cur->value);
-    }
-
-    middle--;
-  }
+  List_split(words,left,right);
 
   left = List_merge_sort(left,cmp);
   right = List_merge_sort(right,cmp);
