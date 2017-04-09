@@ -23,18 +23,25 @@ int List_bubble_sort(List *words,List_compare cmp){
     return 0;
   }
 
+  int length = List_count(words);
+  int index = 0;
   int sorted = 1;
 
   do{
+    index = 0;
     sorted = 1;
     LIST_FOREACH(words,first,next,cur){
-      if(cur->next){
-        if(cmp(cur->value,cur->next->value) > 0){
-          List_swap(cur,cur->next);         
-          sorted = 0;
+      if(index < length){
+        index++;
+        if(cur->next){
+          if(cmp(cur->value,cur->next->value) > 0){
+            List_swap(cur,cur->next);         
+            sorted = 0;
+          }
         }
       }
     }
+    length--;
   }while(!(sorted));
 
   return 0;
@@ -105,16 +112,13 @@ List *List_merge_sort(List *words, List_compare cmp){
     middle--;
   }
 
-  List *sorted_left = List_merge_sort(left,cmp);
-  List *sorted_right = List_merge_sort(right,cmp);
+  left = List_merge_sort(left,cmp);
+  right = List_merge_sort(right,cmp);
 
-  if(sorted_left != left) List_destroy(left);
-  if(sorted_right != right) List_destroy(right);
+  result = List_merge(left,right,cmp);
 
-  result = List_merge(sorted_left,sorted_right,cmp);
-
-  List_destroy(sorted_left);
-  List_destroy(sorted_right);
+  List_destroy(left);
+  List_destroy(right);
 
   return result;
 
