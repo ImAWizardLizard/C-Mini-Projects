@@ -64,7 +64,6 @@ char *test_bubble_sort(){
 
 
 char *test_merge_sort(){
-
   List *words = create_words();
 
   // should work on a list that needs sorting
@@ -80,6 +79,24 @@ char *test_merge_sort(){
   return NULL;
 }
 
+char *test_insert_sort(){
+  List *words = create_words();
+
+  int rc = List_bubble_sort(words,(List_compare) strcmp);
+  mu_assert(rc == 0,"Unable to sort values.");
+  
+  rc = List_insert_sort(words,"hello",(List_compare) strcmp);
+  mu_assert(rc == 0,"Unable to insert value.");
+
+  rc = List_insert_sort(words,"WORDS",(List_compare) strcmp);
+  mu_assert(rc == 0,"Unable to insert value.");
+
+  mu_assert(is_sorted(words),"Words are not sorted after insert sort");
+  List_destroy(words);
+
+  return NULL;
+}
+
 
 
 char *all_tests(){
@@ -87,6 +104,7 @@ char *all_tests(){
 
   mu_run_test(test_bubble_sort);
   mu_run_test(test_merge_sort);
+  mu_run_test(test_insert_sort);
 
 
   return NULL;

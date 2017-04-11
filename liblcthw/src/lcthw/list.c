@@ -8,6 +8,12 @@ List *List_create(){
 
 }
 
+ListNode *Node_create(){
+
+  return calloc(1,sizeof(ListNode));
+
+}
+
 void List_destroy(List *list){
 
   check(list != NULL,"Invalid list.");
@@ -32,7 +38,7 @@ error:
 void List_push(List *list, void *value){
   
   check(list != NULL,"List is invalid.");
-  ListNode *node = calloc(1,sizeof(ListNode));
+  ListNode *node = Node_create();
   check_mem(node);
 
   node->value = value;
@@ -70,7 +76,7 @@ void List_unshift(List *list,void *value){
 
   check(list != NULL,"List is invalid.");
 
-  ListNode *node = calloc(1,sizeof(ListNode));
+  ListNode *node = Node_create();
 
   check_mem(node);
   node->value = value;
@@ -114,10 +120,32 @@ error:
   return;
 }
 
-void List_insert(List *list,size_t index,void *value){
+void List_insert(List *list,ListNode *cur,void *value){
 
   check(list != NULL,"Invalid list");
-  ListNode *node = calloc(1,sizeof(ListNode));
+  check(cur != NULL,"Invalid list");
+
+  ListNode *node = Node_create();
+  check_mem(node);
+
+  node->value = value;
+  node->next = cur->next;
+  node->prev = cur;
+
+  cur->next = node;
+  cur->next->prev = node;
+
+  list->count++;
+
+
+error:
+  return;
+}
+
+void List_insert_index(List *list,size_t index,void *value){
+
+  check(list != NULL,"Invalid list");
+  ListNode *node = Node_create();
   check_mem(node);
 
   node->value = value;

@@ -24,6 +24,7 @@ typedef struct List{
 
 // List_create function which returns memory the size of a List
 List *List_create();
+ListNode *Node_create();
 
 // function which free's the memory allocated for the list and  clears its
 // values
@@ -49,7 +50,8 @@ void List_unshift(List *list, void *value);
 void *List_shift(List *list);
 
 // A function which inserts a node at a certain index
-void List_insert(List *list,size_t index, void *value);
+void List_insert(List *list,ListNode *cur, void *value);
+void List_insert_index(List *list,size_t index, void *value);
 
 // join list_2 onto list_1 or essentially combine two lists
 void List_join(List *list_1, List *list_2);

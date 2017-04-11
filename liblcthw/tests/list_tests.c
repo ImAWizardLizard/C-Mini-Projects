@@ -158,7 +158,7 @@ char *test_split(){
 
 char *test_insert(){
 
-  List_insert(list,2,"hello");
+  List_insert_index(list,2,"hello");
 
   return NULL;
 }

@@ -15,6 +15,30 @@ error: //fall through
   return;
 }
 
+int List_insert_sort(List *words,void *value,List_compare cmp){
+
+  check(words != NULL,"List is invlaid.");
+  check(value != NULL,"Value is null");
+  
+  LIST_FOREACH(words,first,next,cur){
+
+    if(cmp(value,cur->value) < 0 && cur == words->first){
+      List_unshift(words,value);
+      break;
+    }else if((cmp(value,cur->value) > 0) && (cmp(value,cur->next->value) < 0)){
+      List_insert(words,cur,value);
+      break;
+    }else if(cmp(value,cur->value) > 0 && cur == words->last ){
+      List_push(words,value);
+      break;
+    }
+  }
+  
+  return 0;
+error:
+  return 1;
+}
+
 int List_bubble_sort(List *words,List_compare cmp){
 
   check(words != NULL,"List is invalid.");
