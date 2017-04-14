@@ -6,30 +6,60 @@
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 CFLAGS	Makefile	/^CFLAGS=-g -O2 -Wall -Wextra -Isrc -rdynamic -DNDEBUG $(OPTFLAGS)$/;"	m
 CFLAGS	Makefile	/^dev: CFLAGS=-g -Wall -Isrc -Wall -Wextra $(OPTFLAGS)$/;"	m
+DArray	src/lcthw/darray.h	/^typedef struct DArray{$/;"	s
+DArray	src/lcthw/darray.h	/^} DArray;$/;"	t	typeref:struct:DArray
+DArray_clear	src/lcthw/darray.c	/^void DArray_clear(DArray *array){$/;"	f
+DArray_clear_destroy	src/lcthw/darray.c	/^void DArray_clear_destroy(DArray * array){$/;"	f
+DArray_contract	src/lcthw/darray.c	/^int DArray_contract(DArray * array){$/;"	f
+DArray_count	src/lcthw/darray.h	40;"	d
+DArray_create	src/lcthw/darray.c	/^DArray *DArray_create(size_t element_size,size_t inital_max){$/;"	f
+DArray_destroy	src/lcthw/darray.c	/^void DArray_destroy(DArray * array){$/;"	f
+DArray_end	src/lcthw/darray.h	38;"	d
+DArray_expand	src/lcthw/darray.c	/^int DArray_expand(DArray * array){$/;"	f
+DArray_first	src/lcthw/darray.h	36;"	d
+DArray_free	src/lcthw/darray.h	82;"	d
+DArray_get	src/lcthw/darray.h	/^static inline void *DArray_get(DArray * array, int i){$/;"	f
+DArray_last	src/lcthw/darray.h	34;"	d
+DArray_max	src/lcthw/darray.h	42;"	d
+DArray_new	src/lcthw/darray.h	/^static inline void *DArray_new(DArray * array){$/;"	f
+DArray_pop	src/lcthw/darray.c	/^void *DArray_pop(DArray * array){$/;"	f
+DArray_push	src/lcthw/darray.c	/^int DArray_push(DArray * array, void *el){$/;"	f
+DArray_remove	src/lcthw/darray.h	/^static inline void *DArray_remove(DArray * array,int i){$/;"	f
+DArray_resize	src/lcthw/darray.c	/^static inline int DArray_resize(DArray * array, size_t newsize){$/;"	f	file:
+DArray_set	src/lcthw/darray.h	/^static inline void DArray_set(DArray * array,int i, void *el){$/;"	f
+DEFAULT_EXPAND_RATE	src/lcthw/darray.h	44;"	d
 LDFLAGS	Makefile	/^LDFLAGS=$(OPTLIBS)$/;"	m
 LDLIBS	Makefile	/^LDLIBS=-ldl $(OPTLIBS)$/;"	m
-LIST_FOREACH	src/lcthw/list.h	71;"	d
+LIST_FOREACH	src/lcthw/list.h	73;"	d
 List	src/lcthw/list.h	/^typedef struct List{$/;"	s
 List	src/lcthw/list.h	/^} List;$/;"	t	typeref:struct:List
 ListNode	src/lcthw/list.h	/^typedef struct ListNode{$/;"	s
 ListNode	src/lcthw/list.h	/^} ListNode;$/;"	t	typeref:struct:ListNode
-List_destroy	src/lcthw/list.c	/^void List_destroy(List *list){$/;"	f
+List_bubble_sort	src/lcthw/list_algos.c	/^int List_bubble_sort(List *words,List_compare cmp){$/;"	f
+List_compare	src/lcthw/list_algos.h	/^typedef int (*List_compare)(const void *a,const void *b);$/;"	t
 List_copy	src/lcthw/list.c	/^void List_copy(List *to, List *from){$/;"	f
-List_count	src/lcthw/list.h	34;"	d
+List_count	src/lcthw/list.h	35;"	d
 List_create	src/lcthw/list.c	/^List *List_create(){$/;"	f
-List_first	src/lcthw/list.h	35;"	d
-List_insert	src/lcthw/list.c	/^void List_insert(List *list,size_t index,void *value){$/;"	f
+List_destroy	src/lcthw/list.c	/^void List_destroy(List *list){$/;"	f
+List_first	src/lcthw/list.h	36;"	d
+List_insert	src/lcthw/list.c	/^void List_insert(List *list,ListNode *cur,void *value){$/;"	f
+List_insert_index	src/lcthw/list.c	/^void List_insert_index(List *list,size_t index,void *value){$/;"	f
+List_insert_sort	src/lcthw/list_algos.c	/^int List_insert_sort(List *words,void *value,List_compare cmp){$/;"	f
 List_join	src/lcthw/list.c	/^void List_join(List *list_1,List *list_2){$/;"	f
-List_last	src/lcthw/list.h	36;"	d
+List_last	src/lcthw/list.h	37;"	d
+List_merge	src/lcthw/list_algos.c	/^inline List *List_merge(List *left, List *right,List_compare cmp){$/;"	f
+List_merge_sort	src/lcthw/list_algos.c	/^List *List_merge_sort(List *words, List_compare cmp){$/;"	f
 List_pop	src/lcthw/list.c	/^void *List_pop(List *list){$/;"	f
 List_push	src/lcthw/list.c	/^void List_push(List *list, void *value){$/;"	f
 List_remove	src/lcthw/list.c	/^void *List_remove(List *list,ListNode *node){$/;"	f
 List_shift	src/lcthw/list.c	/^void *List_shift(List *list){$/;"	f
-List_split	src/lcthw/list.c	/^void List_split(List *list,List *list_2){$/;"	f
+List_split	src/lcthw/list.c	/^void List_split(List *list,List *list_1,List *list_2){$/;"	f
+List_swap	src/lcthw/list_algos.c	/^void List_swap(ListNode *node_1,ListNode *node_2){$/;"	f
 List_unshift	src/lcthw/list.c	/^void List_unshift(List *list,void *value){$/;"	f
 List_values	src/lcthw/list.c	/^void List_values(List *list){$/;"	f
 NDEBUG	tests/minunit.h	1;"	d
 NUM_VALUES	tests/list_algos_tests.c	9;"	d	file:
+Node_create	src/lcthw/list.c	/^ListNode *Node_create(){$/;"	f
 OBJECTS	Makefile	/^OBJECTS=$(patsubst %.c,%.o,$(SOURCES))$/;"	m
 PREFIX	Makefile	/^PREFIX?=\/usr\/local$/;"	m
 RUN_TESTS	tests/minunit.h	17;"	d
@@ -38,30 +68,41 @@ SO_TARGET	Makefile	/^SO_TARGET=$(patsubst %.a,%.so,$(TARGET))$/;"	m
 TARGET	Makefile	/^TARGET=build\/liblcthw.a$/;"	m
 TESTS	Makefile	/^TESTS=$(patsubst %.c,%,$(TEST_SRC))$/;"	m
 TEST_SRC	Makefile	/^TEST_SRC=$(wildcard tests\/*_tests.c)$/;"	m
+_Darray_h	src/lcthw/darray.h	2;"	d
 __dbg_h__	src/lcthw/dbg.h	2;"	d
 _minunit_h_	tests/minunit.h	3;"	d
+all_tests	tests/darray_tests.c	/^RUN_ALL_TESTS(all_tests);$/;"	v
+all_tests	tests/darray_tests.c	/^char *all_tests(){$/;"	f
 all_tests	tests/list_algos_tests.c	/^RUN_TESTS(all_tests);$/;"	v
 all_tests	tests/list_algos_tests.c	/^char *all_tests(){$/;"	f
 all_tests	tests/list_tests.c	/^char *all_tests(){$/;"	f
+array	tests/darray_tests.c	/^static DArray *array = NULL;$/;"	v	file:
 check	src/lcthw/dbg.h	28;"	d
 check_debug	src/lcthw/dbg.h	36;"	d
 check_mem	src/lcthw/dbg.h	34;"	d
 clean_errno	src/lcthw/dbg.h	15;"	d
+contents	src/lcthw/darray.h	/^  void **contents;$/;"	m	struct:DArray
 count	src/lcthw/list.h	/^  int count;$/;"	m	struct:List
 create_words	tests/list_algos_tests.c	/^List *create_words(){$/;"	f
 debug	src/lcthw/dbg.h	11;"	d
 debug	src/lcthw/dbg.h	9;"	d
+element_size	src/lcthw/darray.h	/^  size_t element_size;$/;"	m	struct:DArray
+end	src/lcthw/darray.h	/^  int end;$/;"	m	struct:DArray
+expand_rate	src/lcthw/darray.h	/^  size_t expand_rate;$/;"	m	struct:DArray
 first	src/lcthw/list.h	/^  ListNode *first;$/;"	m	struct:List
 is_sorted	tests/list_algos_tests.c	/^int is_sorted(List *words){$/;"	f
 last	src/lcthw/list.h	/^  ListNode *last;$/;"	m	struct:List
 lcthw_List_h	src/lcthw/list.h	2;"	d
+lcthw_list_algos_h	src/lcthw/list_algos.h	2;"	d
 list	tests/list_tests.c	/^static List *list = NULL;$/;"	v	file:
 list_2	tests/list_tests.c	/^static List *list_2 = NULL;$/;"	v	file:
 list_3	tests/list_tests.c	/^static List *list_3 = NULL;$/;"	v	file:
 list_4	tests/list_tests.c	/^static List *list_4 = NULL;$/;"	v	file:
+list_5	tests/list_tests.c	/^static List *list_5 = NULL;$/;"	v	file:
 log_err	src/lcthw/dbg.h	17;"	d
 log_info	src/lcthw/dbg.h	25;"	d
 log_warn	src/lcthw/dbg.h	21;"	d
+max	src/lcthw/darray.h	/^  int max;$/;"	m	struct:DArray
 mu_assert	tests/minunit.h	11;"	d
 mu_run_test	tests/minunit.h	14;"	d
 mu_suite_start	tests/minunit.h	9;"	d
@@ -73,16 +114,28 @@ test2	tests/list_tests.c	/^char *test2 = "test2 data";$/;"	v
 test3	tests/list_tests.c	/^char *test3 = "test3 data";$/;"	v
 test_bubble_sort	tests/list_algos_tests.c	/^char *test_bubble_sort(){$/;"	f
 test_copy	tests/list_tests.c	/^char *test_copy(){$/;"	f
+test_create	tests/darray_tests.c	/^char *test_create(){$/;"	f
 test_create	tests/list_tests.c	/^char *test_create(){$/;"	f
+test_destroy	tests/darray_tests.c	/^char *test_destroy(){$/;"	f
 test_destroy	tests/list_tests.c	/^char *test_destroy(){$/;"	f
+test_expand_contract	tests/darray_tests.c	/^char *test_expand_contract(){$/;"	f
+test_get	tests/darray_tests.c	/^char *test_get(){$/;"	f
 test_insert	tests/list_tests.c	/^char *test_insert(){$/;"	f
+test_insert_sort	tests/list_algos_tests.c	/^char *test_insert_sort(){$/;"	f
 test_join	tests/list_tests.c	/^char *test_join(){$/;"	f
+test_merge_sort	tests/list_algos_tests.c	/^char *test_merge_sort(){$/;"	f
+test_new	tests/darray_tests.c	/^char *test_new(){$/;"	f
+test_push_pop	tests/darray_tests.c	/^char *test_push_pop(){$/;"	f
 test_push_pop	tests/list_tests.c	/^char *test_push_pop(){$/;"	f
+test_remove	tests/darray_tests.c	/^char *test_remove(){$/;"	f
 test_remove	tests/list_tests.c	/^char *test_remove(){$/;"	f
+test_set	tests/darray_tests.c	/^char *test_set(){$/;"	f
 test_shift	tests/list_tests.c	/^char *test_shift(){$/;"	f
 test_split	tests/list_tests.c	/^char *test_split(){$/;"	f
 test_unshift	tests/list_tests.c	/^char *test_unshift(){$/;"	f
 test_values	tests/list_tests.c	/^char *test_values(){$/;"	f
 tests_run	tests/minunit.h	/^int tests_run;$/;"	v
+val1	tests/darray_tests.c	/^static int *val1 = NULL;$/;"	v	file:
+val2	tests/darray_tests.c	/^static int *val2 = NULL;$/;"	v	file:
 value	src/lcthw/list.h	/^  void *value;$/;"	m	struct:ListNode
 values	tests/list_algos_tests.c	/^char *values[]  = {"XXXX","1234","abcd","xjvef","NDSS"};$/;"	v

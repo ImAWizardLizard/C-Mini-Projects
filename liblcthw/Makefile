@@ -37,7 +37,7 @@ tests: $(TESTS)
 	sh ./tests/runtests.sh
 
 valgrind:
-	VALGRIND="valgrind --log-file=/tmp/valgrind-%p.log" $(MAKE)
+	VALGRIND="valgrind --log-file=/tmp/valgrind-%p.log --time-unit=ms" $(MAKE)
 
 # The Cleaner
 clean:
