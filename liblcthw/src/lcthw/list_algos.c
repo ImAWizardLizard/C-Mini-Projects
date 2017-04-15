@@ -43,9 +43,7 @@ int List_bubble_sort(List *words,List_compare cmp){
 
   check(words != NULL,"List is invalid.");
 
-  if(List_count(words) <= 1){
-    return 0;
-  }
+  if(List_count(words) <= 1) return 0;
 
   int length = List_count(words);
   int index = 0;

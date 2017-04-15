@@ -11,23 +11,23 @@ DArray	src/lcthw/darray.h	/^} DArray;$/;"	t	typeref:struct:DArray
 DArray_clear	src/lcthw/darray.c	/^void DArray_clear(DArray *array){$/;"	f
 DArray_clear_destroy	src/lcthw/darray.c	/^void DArray_clear_destroy(DArray * array){$/;"	f
 DArray_contract	src/lcthw/darray.c	/^int DArray_contract(DArray * array){$/;"	f
-DArray_count	src/lcthw/darray.h	40;"	d
+DArray_count	src/lcthw/darray.h	37;"	d
 DArray_create	src/lcthw/darray.c	/^DArray *DArray_create(size_t element_size,size_t inital_max){$/;"	f
 DArray_destroy	src/lcthw/darray.c	/^void DArray_destroy(DArray * array){$/;"	f
-DArray_end	src/lcthw/darray.h	38;"	d
+DArray_end	src/lcthw/darray.h	36;"	d
 DArray_expand	src/lcthw/darray.c	/^int DArray_expand(DArray * array){$/;"	f
-DArray_first	src/lcthw/darray.h	36;"	d
-DArray_free	src/lcthw/darray.h	82;"	d
+DArray_first	src/lcthw/darray.h	35;"	d
+DArray_free	src/lcthw/darray.h	90;"	d
 DArray_get	src/lcthw/darray.h	/^static inline void *DArray_get(DArray * array, int i){$/;"	f
 DArray_last	src/lcthw/darray.h	34;"	d
-DArray_max	src/lcthw/darray.h	42;"	d
+DArray_max	src/lcthw/darray.h	38;"	d
 DArray_new	src/lcthw/darray.h	/^static inline void *DArray_new(DArray * array){$/;"	f
 DArray_pop	src/lcthw/darray.c	/^void *DArray_pop(DArray * array){$/;"	f
 DArray_push	src/lcthw/darray.c	/^int DArray_push(DArray * array, void *el){$/;"	f
 DArray_remove	src/lcthw/darray.h	/^static inline void *DArray_remove(DArray * array,int i){$/;"	f
-DArray_resize	src/lcthw/darray.c	/^static inline int DArray_resize(DArray * array, size_t newsize){$/;"	f	file:
+DArray_resize	src/lcthw/darray.c	/^static inline int DArray_resize(DArray * array, size_t new_size){$/;"	f	file:
 DArray_set	src/lcthw/darray.h	/^static inline void DArray_set(DArray * array,int i, void *el){$/;"	f
-DEFAULT_EXPAND_RATE	src/lcthw/darray.h	44;"	d
+DEFAULT_EXPAND_RATE	src/lcthw/darray.h	40;"	d
 LDFLAGS	Makefile	/^LDFLAGS=$(OPTLIBS)$/;"	m
 LDLIBS	Makefile	/^LDLIBS=-ldl $(OPTLIBS)$/;"	m
 LIST_FOREACH	src/lcthw/list.h	73;"	d
@@ -71,7 +71,7 @@ TEST_SRC	Makefile	/^TEST_SRC=$(wildcard tests\/*_tests.c)$/;"	m
 _Darray_h	src/lcthw/darray.h	2;"	d
 __dbg_h__	src/lcthw/dbg.h	2;"	d
 _minunit_h_	tests/minunit.h	3;"	d
-all_tests	tests/darray_tests.c	/^RUN_ALL_TESTS(all_tests);$/;"	v
+all_tests	tests/darray_tests.c	/^RUN_TESTS(all_tests);$/;"	v
 all_tests	tests/darray_tests.c	/^char *all_tests(){$/;"	f
 all_tests	tests/list_algos_tests.c	/^RUN_TESTS(all_tests);$/;"	v
 all_tests	tests/list_algos_tests.c	/^char *all_tests(){$/;"	f
