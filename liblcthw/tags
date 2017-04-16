@@ -10,6 +10,7 @@ DArray	src/lcthw/darray.h	/^typedef struct DArray{$/;"	s
 DArray	src/lcthw/darray.h	/^} DArray;$/;"	t	typeref:struct:DArray
 DArray_clear	src/lcthw/darray.c	/^void DArray_clear(DArray *array){$/;"	f
 DArray_clear_destroy	src/lcthw/darray.c	/^void DArray_clear_destroy(DArray * array){$/;"	f
+DArray_compare	src/lcthw/darray_algos.h	/^typedef int (*DArray_compare)(const void *a,const void *b);$/;"	t
 DArray_contract	src/lcthw/darray.c	/^int DArray_contract(DArray * array){$/;"	f
 DArray_count	src/lcthw/darray.h	37;"	d
 DArray_create	src/lcthw/darray.c	/^DArray *DArray_create(size_t element_size,size_t inital_max){$/;"	f
@@ -19,11 +20,14 @@ DArray_expand	src/lcthw/darray.c	/^int DArray_expand(DArray * array){$/;"	f
 DArray_first	src/lcthw/darray.h	35;"	d
 DArray_free	src/lcthw/darray.h	90;"	d
 DArray_get	src/lcthw/darray.h	/^static inline void *DArray_get(DArray * array, int i){$/;"	f
+DArray_heapsort	src/lcthw/darray_algos.c	/^int DArray_heapsort(DArray * array, DArray_compare cmp){$/;"	f
 DArray_last	src/lcthw/darray.h	34;"	d
 DArray_max	src/lcthw/darray.h	38;"	d
+DArray_mergesort	src/lcthw/darray_algos.c	/^int DArray_mergesort(DArray * array, DArray_compare cmp){$/;"	f
 DArray_new	src/lcthw/darray.h	/^static inline void *DArray_new(DArray * array){$/;"	f
 DArray_pop	src/lcthw/darray.c	/^void *DArray_pop(DArray * array){$/;"	f
 DArray_push	src/lcthw/darray.c	/^int DArray_push(DArray * array, void *el){$/;"	f
+DArray_qsort	src/lcthw/darray_algos.c	/^int DArray_qsort(DArray * array, DArray_compare cmp){$/;"	f
 DArray_remove	src/lcthw/darray.h	/^static inline void *DArray_remove(DArray * array,int i){$/;"	f
 DArray_resize	src/lcthw/darray.c	/^static inline int DArray_resize(DArray * array, size_t new_size){$/;"	f	file:
 DArray_set	src/lcthw/darray.h	/^static inline void DArray_set(DArray * array,int i, void *el){$/;"	f
@@ -93,6 +97,7 @@ first	src/lcthw/list.h	/^  ListNode *first;$/;"	m	struct:List
 is_sorted	tests/list_algos_tests.c	/^int is_sorted(List *words){$/;"	f
 last	src/lcthw/list.h	/^  ListNode *last;$/;"	m	struct:List
 lcthw_List_h	src/lcthw/list.h	2;"	d
+lcthw_darray_algos_h	src/lcthw/darray_algos.h	2;"	d
 lcthw_list_algos_h	src/lcthw/list_algos.h	2;"	d
 list	tests/list_tests.c	/^static List *list = NULL;$/;"	v	file:
 list_2	tests/list_tests.c	/^static List *list_2 = NULL;$/;"	v	file:
