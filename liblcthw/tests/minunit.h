@@ -31,8 +31,3 @@
 int tests_run;
 
 #endif
-
-
-  
-
-

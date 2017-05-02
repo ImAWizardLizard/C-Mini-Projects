@@ -1,7 +1,5 @@
-#CFLAGS=-g -O2 -Wall -Wextra -Isrc -rdynamic -DNDEBUG $(OPTFLAGS)
 CFLAGS=-g -O2 -Wall -Wextra -Isrc $(shell pkg-config --cflags libbsd) -rdynamic -DNDEBUG $(OPTFLAGS)
 COMMON_LIBS = $(shell pkg-config --libs libbsd) -ldl $(OPTLIBS)
-#LDLIBS=-lbsd -ldl $(OPTLIBS)
 LDLIBS=$(COMMON_LIBS)
 LDFLAGS=$(OPTLIBS)
 PREFIX?=/usr/local
@@ -18,8 +16,7 @@ SO_TARGET=$(patsubst %.a,%.so,$(TARGET))
 # The Target Build
 all: $(TARGET) $(SO_TARGET) tests
 
-#dev: CFLAGS=-g -Wall -Isrc -Wall -Wextra $(OPTFLAGS)
-dev: CFLAGS=-g -Wall -Wextra -Isrc $(shell pkg-config --cflags libbsd) $(OPTFLAGS)
+dev: CFLAGS=-g -O2 -Wall -Wextra -Isrc $(shell pkg-config --cflags libbsd) $(OPTFLAGS)
 dev: all
 
 $(TARGET): CFLAGS += -fPIC
@@ -36,13 +33,12 @@ build:
 
 # The Unit Tests
 .PHONY: tests
-#tests: LDLIBS += $(TARGET)
 tests: LDLIBS = $(TARGET) $(COMMON_LIBS)
 tests: $(TESTS)
 	sh ./tests/runtests.sh
 
 valgrind:
-	VALGRIND="valgrind --log-file=/tmp/valgrind-%p.log --time-unit=ms" $(MAKE)
+	VALGRIND="valgrind --log-file=/tmp/valgrind-%p.log" $(MAKE)
 
 # The Cleaner
 clean:
