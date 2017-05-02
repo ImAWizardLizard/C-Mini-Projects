@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include <stdarg.h>
 #include "dbg.h"
-#include "colours.h"
+#include "colors.h"
 
 
 #define MAX_LENGTH 100
@@ -17,7 +17,7 @@
 // could have just used an use_or integer if I wanted to use or comparision
 typedef int (*scan_type)(int num,...);
 
-int scan_and(int found_it,...){
+int scan_and(int found_it, ...){
   
   va_list args;
   int search_num = 0;
@@ -25,8 +25,6 @@ int scan_and(int found_it,...){
   va_start(args,found_it);
 
   search_num = va_arg(args,int);
-
-
 
   if(found_it == search_num) return 1;
 
@@ -77,7 +75,7 @@ int scan_file(char *file_path,char **words,int search_num,int (*scan)(int num,..
       // on each scan type
       if(scan(found_it,search_num)){
         // if so, output the file path and line number 
-        printf(ANSI_COLOR_GREEN "%s" ANSI_COLOR_RESET ":" ANSI_COLOR_CYAN "%d" ANSI_COLOR_RESET "\n",file_path,line_num);
+        printf(SET_GREEN("%s") ":" SET_CYAN("%d")"\n",file_path,line_num);
         // then break, since we have found all the words we needed, and we can
         // go onto the next file
         break;
