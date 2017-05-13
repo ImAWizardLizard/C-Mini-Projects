@@ -52,4 +52,5 @@ Mkfile.old
 dkms.conf
 
 # Tags file
+tags
 **/tags
