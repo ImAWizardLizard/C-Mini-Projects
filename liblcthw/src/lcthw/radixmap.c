@@ -78,17 +78,17 @@ void RadixMap_sort(RadixMap * map, int position){
   check(map != NULL,"RadixMap is invalid.");
   uint64_t *source = &map->contents[position].raw;
   uint64_t *temp = &map->temp[position].raw;
+  int length = map->end - position;
 
   /*
   uint64_t *added_element = &map->contents[map->end - 1].raw;
-  int length = map->end - position;
   int i = 0;
   */
   
-  radix_sort(0,map->end - position,source,temp);
-  radix_sort(1,map->end - position,temp,source);
-  radix_sort(2,map->end - position,source,temp);
-  radix_sort(3,map->end - position,temp,source);
+  radix_sort(0,length,source,temp);
+  radix_sort(1,length,temp,source);
+  radix_sort(2,length,source,temp);
+  radix_sort(3,length,temp,source);
   
 error:
   return;

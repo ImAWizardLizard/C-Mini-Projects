@@ -74,7 +74,7 @@ static char *test_operations(){
 
   //////// SETUP ////////
   
-  size_t N = 20000;
+  size_t N = 5000;
 
   RadixMap * sorted_map;
   RadixMap * radixsort_map;
