@@ -1,0 +1,854 @@
+==8769== Memcheck, a memory error detector
+==8769== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==8769== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==8769== Command: ./tests/darray_algos_tests
+==8769== 
+DEBUG tests/darray_algos_tests.c:92:main ----- RUNNING: ./tests/darray_algos_tests
+DEBUG tests/darray_algos_tests.c:83:all_tests 
+----- test_qsort
+DEBUG tests/darray_algos_tests.c:50:run_sort_test --- Testing qsort sorting algorithm
+DEBUG tests/darray_algos_tests.c:84:all_tests 
+----- test_heapsort
+DEBUG tests/darray_algos_tests.c:50:run_sort_test --- Testing heapsort sorting algorithm
+DEBUG tests/darray_algos_tests.c:85:all_tests 
+----- test_mergesort
+DEBUG tests/darray_algos_tests.c:50:run_sort_test --- Testing mergesort sorting algorithm
+==8769== 
+==8769== HEAP SUMMARY:
+==8769==     in use at exit: 0 bytes in 0 blocks
+==8769==   total heap usage: 12 allocs, 12 frees, 8,616 bytes allocated
+==8769== 
+==8769== All heap blocks were freed -- no leaks are possible
+==8769== 
+==8769== For counts of detected and suppressed errors, rerun with: -v
+==8769== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==8770== Memcheck, a memory error detector
+==8770== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==8770== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==8770== Command: ./tests/darray_tests
+==8770== 
+DEBUG tests/darray_tests.c:120:main ----- RUNNING: ./tests/darray_tests
+DEBUG tests/darray_tests.c:108:all_tests 
+----- test_create
+DEBUG tests/darray_tests.c:109:all_tests 
+----- test_new
+DEBUG tests/darray_tests.c:110:all_tests 
+----- test_set
+DEBUG tests/darray_tests.c:111:all_tests 
+----- test_get
+DEBUG tests/darray_tests.c:112:all_tests 
+----- test_remove
+DEBUG tests/darray_tests.c:113:all_tests 
+----- test_expand_contract
+DEBUG tests/darray_tests.c:114:all_tests 
+----- test_push_pop
+DEBUG tests/darray_tests.c:115:all_tests 
+----- test_destroy
+==8770== 
+==8770== HEAP SUMMARY:
+==8770==     in use at exit: 0 bytes in 0 blocks
+==8770==   total heap usage: 1,709 allocs, 1,709 frees, 3,675,896 bytes allocated
+==8770== 
+==8770== All heap blocks were freed -- no leaks are possible
+==8770== 
+==8770== For counts of detected and suppressed errors, rerun with: -v
+==8770== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==8771== Memcheck, a memory error detector
+==8771== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==8771== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==8771== Command: ./tests/list_algos_tests
+==8771== 
+DEBUG tests/list_algos_tests.c:114:main ----- RUNNING: ./tests/list_algos_tests
+DEBUG tests/list_algos_tests.c:105:all_tests 
+----- test_bubble_sort
+DEBUG tests/list_algos_tests.c:38:test_bubble_sort created words
+==8771== Invalid free() / delete / delete[] / realloc()
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016E6: List_destroy (list.c:26)
+==8771==    by 0x40121E: test_bubble_sort (list_algos_tests.c:51)
+==8771==    by 0x4015E8: all_tests (list_algos_tests.c:105)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x402be6 is in a r-x mapped file /home/harry/Dropbox/Harry/Projects/Practice-Programming/C-Programming/Projects/liblcthw/tests/list_algos_tests segment
+==8771== 
+DEBUG tests/list_algos_tests.c:106:all_tests 
+----- test_merge_sort
+==8771== Invalid read of size 1
+==8771==    at 0x4C31F93: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x40276C: List_merge (list_algos.c:86)
+==8771==    by 0x40276C: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x52041a0 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x402788: List_merge (list_algos.c:92)
+==8771==    by 0x402788: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x401D72: List_split (list.c:187)
+==8771==    by 0x4026F1: List_merge_sort (list_algos.c:129)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid free() / delete / delete[] / realloc()
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016E6: List_destroy (list.c:26)
+==8771==    by 0x40287B: List_merge_sort (list_algos.c:137)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5204140 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028A3: List_merge (list_algos.c:99)
+==8771==    by 0x4028A3: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x401D57: List_split (list.c:185)
+==8771==    by 0x4026F1: List_merge_sort (list_algos.c:129)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid read of size 1
+==8771==    at 0x4ED89C0: __strcmp_sse2_unaligned (strcmp-sse2-unaligned.S:24)
+==8771==    by 0x40276C: List_merge (list_algos.c:86)
+==8771==    by 0x40276C: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5203d20 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x402788: List_merge (list_algos.c:92)
+==8771==    by 0x402788: List_merge_sort (list_algos.c:134)
+==8771==    by 0x4026FC: List_merge_sort (list_algos.c:131)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x401D72: List_split (list.c:187)
+==8771==    by 0x4026F1: List_merge_sort (list_algos.c:129)
+==8771==    by 0x4026FC: List_merge_sort (list_algos.c:131)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid read of size 1
+==8771==    at 0x4C31F93: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x40276C: List_merge (list_algos.c:86)
+==8771==    by 0x40276C: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5204260 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x402788: List_merge (list_algos.c:92)
+==8771==    by 0x402788: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x402780: List_merge (list_algos.c:91)
+==8771==    by 0x402780: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid free() / delete / delete[] / realloc()
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016E6: List_destroy (list.c:26)
+==8771==    by 0x402873: List_merge_sort (list_algos.c:136)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5203cc0 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028A3: List_merge (list_algos.c:99)
+==8771==    by 0x4028A3: List_merge_sort (list_algos.c:134)
+==8771==    by 0x4026FC: List_merge_sort (list_algos.c:131)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x401D57: List_split (list.c:185)
+==8771==    by 0x4026F1: List_merge_sort (list_algos.c:129)
+==8771==    by 0x4026FC: List_merge_sort (list_algos.c:131)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid free() / delete / delete[] / realloc()
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016E6: List_destroy (list.c:26)
+==8771==    by 0x40287B: List_merge_sort (list_algos.c:137)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5203f60 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028A3: List_merge (list_algos.c:99)
+==8771==    by 0x4028A3: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x401D57: List_split (list.c:185)
+==8771==    by 0x4026F1: List_merge_sort (list_algos.c:129)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid read of size 1
+==8771==    at 0x4ED89C0: __strcmp_sse2_unaligned (strcmp-sse2-unaligned.S:24)
+==8771==    by 0x401032: is_sorted (list_algos_tests.c:26)
+==8771==    by 0x401315: test_merge_sort (list_algos_tests.c:71)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5203de0 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028FB: List_merge (list_algos.c:88)
+==8771==    by 0x4028FB: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x402780: List_merge (list_algos.c:91)
+==8771==    by 0x402780: List_merge_sort (list_algos.c:134)
+==8771==    by 0x4026FC: List_merge_sort (list_algos.c:131)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid read of size 1
+==8771==    at 0x4C31F93: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401032: is_sorted (list_algos_tests.c:26)
+==8771==    by 0x401315: test_merge_sort (list_algos_tests.c:71)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5204380 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028D3: List_merge (list_algos.c:105)
+==8771==    by 0x4028D3: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x402780: List_merge (list_algos.c:91)
+==8771==    by 0x402780: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid read of size 1
+==8771==    at 0x4ED89C0: __strcmp_sse2_unaligned (strcmp-sse2-unaligned.S:24)
+==8771==    by 0x40276C: List_merge (list_algos.c:86)
+==8771==    by 0x40276C: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40137C: test_merge_sort (list_algos_tests.c:73)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5203de0 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028FB: List_merge (list_algos.c:88)
+==8771==    by 0x4028FB: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x402780: List_merge (list_algos.c:91)
+==8771==    by 0x402780: List_merge_sort (list_algos.c:134)
+==8771==    by 0x4026FC: List_merge_sort (list_algos.c:131)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid read of size 1
+==8771==    at 0x4C31F93: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x40276C: List_merge (list_algos.c:86)
+==8771==    by 0x40276C: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40137C: test_merge_sort (list_algos_tests.c:73)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5204380 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028D3: List_merge (list_algos.c:105)
+==8771==    by 0x4028D3: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x402780: List_merge (list_algos.c:91)
+==8771==    by 0x402780: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid read of size 1
+==8771==    at 0x4ED89C0: __strcmp_sse2_unaligned (strcmp-sse2-unaligned.S:24)
+==8771==    by 0x401032: is_sorted (list_algos_tests.c:26)
+==8771==    by 0x401387: test_merge_sort (list_algos_tests.c:74)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5203de0 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028FB: List_merge (list_algos.c:88)
+==8771==    by 0x4028FB: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x402780: List_merge (list_algos.c:91)
+==8771==    by 0x402780: List_merge_sort (list_algos.c:134)
+==8771==    by 0x4026FC: List_merge_sort (list_algos.c:131)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid read of size 1
+==8771==    at 0x4C31F93: strcmp (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401032: is_sorted (list_algos_tests.c:26)
+==8771==    by 0x401387: test_merge_sort (list_algos_tests.c:74)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5204380 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028D3: List_merge (list_algos.c:105)
+==8771==    by 0x4028D3: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x402780: List_merge (list_algos.c:91)
+==8771==    by 0x402780: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40270A: List_merge_sort (list_algos.c:132)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid free() / delete / delete[] / realloc()
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016E6: List_destroy (list.c:26)
+==8771==    by 0x4013F7: test_merge_sort (list_algos_tests.c:75)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5204620 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028FB: List_merge (list_algos.c:88)
+==8771==    by 0x4028FB: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40137C: test_merge_sort (list_algos_tests.c:73)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x401D57: List_split (list.c:185)
+==8771==    by 0x4026F1: List_merge_sort (list_algos.c:129)
+==8771==    by 0x40137C: test_merge_sort (list_algos_tests.c:73)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid free() / delete / delete[] / realloc()
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016E6: List_destroy (list.c:26)
+==8771==    by 0x4013FF: test_merge_sort (list_algos_tests.c:76)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5203de0 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x402003: List_remove (list.c:252)
+==8771==    by 0x4028FB: List_merge (list_algos.c:88)
+==8771==    by 0x4028FB: List_merge_sort (list_algos.c:134)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401787: List_push (list.c:41)
+==8771==    by 0x402780: List_merge (list_algos.c:91)
+==8771==    by 0x402780: List_merge_sort (list_algos.c:134)
+==8771==    by 0x4026FC: List_merge_sort (list_algos.c:131)
+==8771==    by 0x40130A: test_merge_sort (list_algos_tests.c:70)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid free() / delete / delete[] / realloc()
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016E6: List_destroy (list.c:26)
+==8771==    by 0x401407: test_merge_sort (list_algos_tests.c:77)
+==8771==    by 0x401636: all_tests (list_algos_tests.c:106)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x402be1 is in a r-x mapped file /home/harry/Dropbox/Harry/Projects/Practice-Programming/C-Programming/Projects/liblcthw/tests/list_algos_tests segment
+==8771== 
+DEBUG tests/list_algos_tests.c:107:all_tests 
+----- test_insert_sort
+==8771== Invalid free() / delete / delete[] / realloc()
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016E6: List_destroy (list.c:26)
+==8771==    by 0x40159F: test_insert_sort (list_algos_tests.c:95)
+==8771==    by 0x40167B: all_tests (list_algos_tests.c:107)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x402be6 is in a r-x mapped file /home/harry/Dropbox/Harry/Projects/Practice-Programming/C-Programming/Projects/liblcthw/tests/list_algos_tests segment
+==8771== 
+==8771== Invalid read of size 8
+==8771==    at 0x4016DE: List_destroy (list.c:26)
+==8771==    by 0x40159F: test_insert_sort (list_algos_tests.c:95)
+==8771==    by 0x40167B: all_tests (list_algos_tests.c:107)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5204ab0 is 16 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016DD: List_destroy (list.c:23)
+==8771==    by 0x40159F: test_insert_sort (list_algos_tests.c:95)
+==8771==    by 0x40167B: all_tests (list_algos_tests.c:107)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401AC1: List_insert (list.c:128)
+==8771==    by 0x40249D: List_insert_sort (list_algos.c:29)
+==8771==    by 0x401503: test_insert_sort (list_algos_tests.c:91)
+==8771==    by 0x40167B: all_tests (list_algos_tests.c:107)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== Invalid read of size 8
+==8771==    at 0x4016E7: List_destroy (list.c:21)
+==8771==    by 0x40159F: test_insert_sort (list_algos_tests.c:95)
+==8771==    by 0x40167B: all_tests (list_algos_tests.c:107)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Address 0x5204aa0 is 0 bytes inside a block of size 24 free'd
+==8771==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x4016DD: List_destroy (list.c:23)
+==8771==    by 0x40159F: test_insert_sort (list_algos_tests.c:95)
+==8771==    by 0x40167B: all_tests (list_algos_tests.c:107)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771==  Block was alloc'd at
+==8771==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8771==    by 0x401AC1: List_insert (list.c:128)
+==8771==    by 0x40249D: List_insert_sort (list_algos.c:29)
+==8771==    by 0x401503: test_insert_sort (list_algos_tests.c:91)
+==8771==    by 0x40167B: all_tests (list_algos_tests.c:107)
+==8771==    by 0x400E8D: main (list_algos_tests.c:114)
+==8771== 
+==8771== 
+==8771== HEAP SUMMARY:
+==8771==     in use at exit: 240 bytes in 10 blocks
+==8771==   total heap usage: 61 allocs, 75 frees, 2,464 bytes allocated
+==8771== 
+==8771== LEAK SUMMARY:
+==8771==    definitely lost: 72 bytes in 3 blocks
+==8771==    indirectly lost: 168 bytes in 7 blocks
+==8771==      possibly lost: 0 bytes in 0 blocks
+==8771==    still reachable: 0 bytes in 0 blocks
+==8771==         suppressed: 0 bytes in 0 blocks
+==8771== Rerun with --leak-check=full to see details of leaked memory
+==8771== 
+==8771== For counts of detected and suppressed errors, rerun with: -v
+==8771== ERROR SUMMARY: 37 errors from 19 contexts (suppressed: 0 from 0)
+==8772== Memcheck, a memory error detector
+==8772== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==8772== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==8772== Command: ./tests/list_tests
+==8772== 
+DEBUG tests/list_tests.c:213:main ----- RUNNING: ./tests/list_tests
+DEBUG tests/list_tests.c:191:all_tests 
+----- test_create
+DEBUG tests/list_tests.c:200:all_tests 
+----- test_unshift
+DEBUG tests/list_tests.c:201:all_tests 
+----- test_join
+DEBUG tests/list_tests.c:202:all_tests 
+----- test_split
+DEBUG tests/list_tests.c:203:all_tests 
+----- test_copy
+DEBUG tests/list_tests.c:204:all_tests 
+----- test_insert
+DEBUG tests/list_tests.c:206:all_tests 
+----- test_destroy
+==8772== Invalid free() / delete / delete[] / realloc()
+==8772==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8772==    by 0x4024E6: List_destroy (list.c:26)
+==8772==    by 0x40118F: test_destroy (list_tests.c:33)
+==8772==    by 0x402477: all_tests (list_tests.c:206)
+==8772==    by 0x400F0D: main (list_tests.c:213)
+==8772==  Address 0x403294 is in a r-x mapped file /home/harry/Dropbox/Harry/Projects/Practice-Programming/C-Programming/Projects/liblcthw/tests/list_tests segment
+==8772== 
+==8772== Invalid free() / delete / delete[] / realloc()
+==8772==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8772==    by 0x4024E6: List_destroy (list.c:26)
+==8772==    by 0x40119B: test_destroy (list_tests.c:34)
+==8772==    by 0x402477: all_tests (list_tests.c:206)
+==8772==    by 0x400F0D: main (list_tests.c:213)
+==8772==  Address 0x4032ad is in a r-x mapped file /home/harry/Dropbox/Harry/Projects/Practice-Programming/C-Programming/Projects/liblcthw/tests/list_tests segment
+==8772== 
+==8772== Invalid free() / delete / delete[] / realloc()
+==8772==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8772==    by 0x4024E6: List_destroy (list.c:26)
+==8772==    by 0x4011A7: test_destroy (list_tests.c:35)
+==8772==    by 0x402477: all_tests (list_tests.c:206)
+==8772==    by 0x400F0D: main (list_tests.c:213)
+==8772==  Address 0x4032ad is in a r-x mapped file /home/harry/Dropbox/Harry/Projects/Practice-Programming/C-Programming/Projects/liblcthw/tests/list_tests segment
+==8772== 
+==8772== 
+==8772== HEAP SUMMARY:
+==8772==     in use at exit: 240 bytes in 10 blocks
+==8772==   total heap usage: 31 allocs, 38 frees, 1,744 bytes allocated
+==8772== 
+==8772== LEAK SUMMARY:
+==8772==    definitely lost: 0 bytes in 0 blocks
+==8772==    indirectly lost: 0 bytes in 0 blocks
+==8772==      possibly lost: 0 bytes in 0 blocks
+==8772==    still reachable: 240 bytes in 10 blocks
+==8772==         suppressed: 0 bytes in 0 blocks
+==8772== Rerun with --leak-check=full to see details of leaked memory
+==8772== 
+==8772== For counts of detected and suppressed errors, rerun with: -v
+==8772== ERROR SUMMARY: 17 errors from 3 contexts (suppressed: 0 from 0)
+==8773== Memcheck, a memory error detector
+==8773== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==8773== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==8773== Command: ./tests/radixmap_tests
+==8773== 
+DEBUG tests/radixmap_tests.c:212:main ----- RUNNING: ./tests/radixmap_tests
+DEBUG tests/radixmap_tests.c:207:all_tests 
+----- test_operations
+==8773== Invalid read of size 4
+==8773==    at 0x40204E: RadixMap_bisect (radixmap.c:253)
+==8773==    by 0x402146: RadixMap_add (radixmap.c:281)
+==8773==    by 0x4010F4: make_random (radixmap_tests.c:13)
+==8773==    by 0x4010F4: test_operations (radixmap_tests.c:95)
+==8773==    by 0x4010F4: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Address 0x5203638 is 8 bytes before a block of size 160,008 alloc'd
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401059: test_operations (radixmap_tests.c:88)
+==8773==    by 0x401059: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x401EEE: RadixMap_mergesort (radixmap.c:198)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==  Address 0x5a512e8 is 8 bytes inside a block of size 160,008 alloc'd
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401CD0: RadixMap_mergesort (radixmap.c:177)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x401EF6: RadixMap_mergesort (radixmap.c:199)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==  Address 0x5a03048 is 8 bytes inside a block of size 160,008 alloc'd
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401CDB: RadixMap_mergesort (radixmap.c:178)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x401EEE: RadixMap_mergesort (radixmap.c:198)
+==8773==    by 0x401E02: RadixMap_mergesort (radixmap.c:194)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==  Address 0x5cc27e8 is 8 bytes inside a block of size 160,008 alloc'd
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401E0E: RadixMap_merge (radixmap.c:142)
+==8773==    by 0x401E0E: RadixMap_mergesort (radixmap.c:196)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401E02: RadixMap_mergesort (radixmap.c:194)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x401EF6: RadixMap_mergesort (radixmap.c:199)
+==8773==    by 0x401E02: RadixMap_mergesort (radixmap.c:194)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==  Address 0x5bd8008 is 8 bytes inside a block of size 160,008 alloc'd
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401CDB: RadixMap_mergesort (radixmap.c:178)
+==8773==    by 0x401E02: RadixMap_mergesort (radixmap.c:194)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x401EEE: RadixMap_mergesort (radixmap.c:198)
+==8773==    by 0x401513: test_operations (radixmap_tests.c:132)
+==8773==    by 0x401513: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Address 0xd7e0a190 is 32,768 bytes inside a block of size 160,008 alloc'd
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401E0E: RadixMap_merge (radixmap.c:142)
+==8773==    by 0x401E0E: RadixMap_mergesort (radixmap.c:196)
+==8773==    by 0x401DF7: RadixMap_mergesort (radixmap.c:193)
+==8773==    by 0x401513: test_operations (radixmap_tests.c:132)
+==8773==    by 0x401513: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x401EF6: RadixMap_mergesort (radixmap.c:199)
+==8773==    by 0x401513: test_operations (radixmap_tests.c:132)
+==8773==    by 0x401513: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Address 0x1a358cfc0 is 32,768 bytes inside a block of size 160,008 alloc'd
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401E0E: RadixMap_merge (radixmap.c:142)
+==8773==    by 0x401E0E: RadixMap_mergesort (radixmap.c:196)
+==8773==    by 0x401E02: RadixMap_mergesort (radixmap.c:194)
+==8773==    by 0x401513: test_operations (radixmap_tests.c:132)
+==8773==    by 0x401513: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x401877: test_operations (radixmap_tests.c:194)
+==8773==    by 0x401877: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Address 0x5203640 is 0 bytes inside a block of size 160,008 free'd
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x40186F: test_operations (radixmap_tests.c:193)
+==8773==    by 0x40186F: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Block was alloc'd at
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401059: test_operations (radixmap_tests.c:88)
+==8773==    by 0x401059: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AEA: RadixMap_destroy (radixmap.c:30)
+==8773==    by 0x401877: test_operations (radixmap_tests.c:194)
+==8773==    by 0x401877: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Address 0x522a790 is 0 bytes inside a block of size 160,008 free'd
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AEA: RadixMap_destroy (radixmap.c:30)
+==8773==    by 0x40186F: test_operations (radixmap_tests.c:193)
+==8773==    by 0x40186F: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Block was alloc'd at
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019D8: RadixMap_create (radixmap.c:16)
+==8773==    by 0x401059: test_operations (radixmap_tests.c:88)
+==8773==    by 0x401059: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x40187F: test_operations (radixmap_tests.c:195)
+==8773==    by 0x40187F: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Address 0x5203640 is 0 bytes inside a block of size 160,008 free'd
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x40186F: test_operations (radixmap_tests.c:193)
+==8773==    by 0x40186F: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Block was alloc'd at
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401059: test_operations (radixmap_tests.c:88)
+==8773==    by 0x401059: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AEA: RadixMap_destroy (radixmap.c:30)
+==8773==    by 0x40187F: test_operations (radixmap_tests.c:195)
+==8773==    by 0x40187F: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Address 0x522a790 is 0 bytes inside a block of size 160,008 free'd
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AEA: RadixMap_destroy (radixmap.c:30)
+==8773==    by 0x40186F: test_operations (radixmap_tests.c:193)
+==8773==    by 0x40186F: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Block was alloc'd at
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019D8: RadixMap_create (radixmap.c:16)
+==8773==    by 0x401059: test_operations (radixmap_tests.c:88)
+==8773==    by 0x401059: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x401887: test_operations (radixmap_tests.c:196)
+==8773==    by 0x401887: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Address 0x5203640 is 0 bytes inside a block of size 160,008 free'd
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AE1: RadixMap_destroy (radixmap.c:29)
+==8773==    by 0x40186F: test_operations (radixmap_tests.c:193)
+==8773==    by 0x40186F: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Block was alloc'd at
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019BE: RadixMap_create (radixmap.c:13)
+==8773==    by 0x401059: test_operations (radixmap_tests.c:88)
+==8773==    by 0x401059: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773== 
+==8773== Invalid free() / delete / delete[] / realloc()
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AEA: RadixMap_destroy (radixmap.c:30)
+==8773==    by 0x401887: test_operations (radixmap_tests.c:196)
+==8773==    by 0x401887: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Address 0x522a790 is 0 bytes inside a block of size 160,008 free'd
+==8773==    at 0x4C2EDEB: free (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x401AEA: RadixMap_destroy (radixmap.c:30)
+==8773==    by 0x40186F: test_operations (radixmap_tests.c:193)
+==8773==    by 0x40186F: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773==  Block was alloc'd at
+==8773==    at 0x4C2FB55: calloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8773==    by 0x4019D8: RadixMap_create (radixmap.c:16)
+==8773==    by 0x401059: test_operations (radixmap_tests.c:88)
+==8773==    by 0x401059: all_tests (radixmap_tests.c:207)
+==8773==    by 0x400D8D: main (radixmap_tests.c:212)
+==8773== 
+==8773== 
+==8773== HEAP SUMMARY:
+==8773==     in use at exit: 6,978,741,176 bytes in 55,419 blocks
+==8773==   total heap usage: 106,270 allocs, 70,855 frees, 11,337,024,776 bytes allocated
+==8773== 
+==8773== LEAK SUMMARY:
+==8773==    definitely lost: 3,199,352,216 bytes in 31,799 blocks
+==8773==    indirectly lost: 3,778,268,904 bytes in 23,613 blocks
+==8773==      possibly lost: 1,120,056 bytes in 7 blocks
+==8773==    still reachable: 0 bytes in 0 blocks
+==8773==         suppressed: 0 bytes in 0 blocks
+==8773== Rerun with --leak-check=full to see details of leaked memory
+==8773== 
+==8773== For counts of detected and suppressed errors, rerun with: -v
+==8773== ERROR SUMMARY: 20005 errors from 13 contexts (suppressed: 0 from 0)

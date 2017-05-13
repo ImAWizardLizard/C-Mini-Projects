@@ -4,9 +4,9 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-ByteOf	src/lcthw/radixmap.c	34;"	d	file:
+ByteOf	src/lcthw/radixmap.c	38;"	d	file:
 CFLAGS	Makefile	/^CFLAGS=-g -O2 -Wall -Wextra -Isrc $(shell pkg-config --cflags libbsd) -rdynamic -DNDEBUG $(OPTFLAGS)$/;"	m
-CFLAGS	Makefile	/^dev: CFLAGS=-g -Wall -Wextra -Isrc $(shell pkg-config --cflags libbsd) $(OPTFLAGS)$/;"	m
+CFLAGS	Makefile	/^dev: CFLAGS=-g -O2 -Wall -Wextra -Isrc $(shell pkg-config --cflags libbsd) $(OPTFLAGS)$/;"	m
 COMMON_LIBS	Makefile	/^COMMON_LIBS = $(shell pkg-config --libs libbsd) -ldl $(OPTLIBS)$/;"	m
 DArray	src/lcthw/darray.h	/^typedef struct DArray{$/;"	s
 DArray	src/lcthw/darray.h	/^} DArray;$/;"	t	typeref:struct:DArray
@@ -65,6 +65,7 @@ List_swap	src/lcthw/list_algos.c	/^void List_swap(ListNode *node_1,ListNode *nod
 List_unshift	src/lcthw/list.c	/^void List_unshift(List *list,void *value){$/;"	f
 List_values	src/lcthw/list.c	/^void List_values(List *list){$/;"	f
 NDEBUG	tests/minunit.h	1;"	d
+NDEBUG	tests/timer.h	1;"	d
 NUM_VALUES	tests/list_algos_tests.c	9;"	d	file:
 Node_create	src/lcthw/list.c	/^ListNode *Node_create(){$/;"	f
 OBJECTS	Makefile	/^OBJECTS=$(patsubst %.c,%.o,$(SOURCES))$/;"	m
@@ -75,11 +76,15 @@ RUN_TESTS	tests/minunit.h	17;"	d
 RadixMap	src/lcthw/radixmap.h	/^typedef struct RadixMap{$/;"	s
 RadixMap	src/lcthw/radixmap.h	/^} RadixMap;$/;"	t	typeref:struct:RadixMap
 RadixMap_add	src/lcthw/radixmap.c	/^int RadixMap_add(RadixMap * map,uint32_t key, uint32_t value){$/;"	f
+RadixMap_bisect	src/lcthw/radixmap.c	/^int RadixMap_bisect(RadixMap * map, uint32_t key){$/;"	f
 RadixMap_create	src/lcthw/radixmap.c	/^RadixMap *RadixMap_create(size_t max){$/;"	f
 RadixMap_delete	src/lcthw/radixmap.c	/^int RadixMap_delete(RadixMap * map, RMElement * el){$/;"	f
 RadixMap_destroy	src/lcthw/radixmap.c	/^void RadixMap_destroy(RadixMap * map){$/;"	f
 RadixMap_find	src/lcthw/radixmap.c	/^RMElement *RadixMap_find(RadixMap * map, uint32_t to_find){$/;"	f
-RadixMap_sort	src/lcthw/radixmap.c	/^void RadixMap_sort(RadixMap * map){$/;"	f
+RadixMap_merge	src/lcthw/radixmap.c	/^static inline RadixMap *RadixMap_merge(RadixMap * left,RadixMap * right){$/;"	f	file:
+RadixMap_mergesort	src/lcthw/radixmap.c	/^RadixMap * RadixMap_mergesort(RadixMap * map){$/;"	f
+RadixMap_quicksort	src/lcthw/radixmap.c	/^RadixMap * RadixMap_quicksort(RadixMap * map,int low, int high){$/;"	f
+RadixMap_sort	src/lcthw/radixmap.c	/^void RadixMap_sort(RadixMap * map, int position){$/;"	f
 SOURCES	Makefile	/^SOURCES=$(wildcard src\/**\/*.c src\/*.c)$/;"	m
 SO_TARGET	Makefile	/^SO_TARGET=$(patsubst %.a,%.so,$(TARGET))$/;"	m
 TARGET	Makefile	/^TARGET=build\/liblcthw.a$/;"	m
@@ -89,6 +94,7 @@ _Darray_h	src/lcthw/darray.h	2;"	d
 __dbg_h__	src/lcthw/dbg.h	2;"	d
 _minunit_h_	tests/minunit.h	3;"	d
 _radixmap_h	src/lcthw/radixmap.h	2;"	d
+_timer_h	tests/timer.h	3;"	d
 all_tests	tests/darray_algos_tests.c	/^RUN_TESTS(all_tests);$/;"	v
 all_tests	tests/darray_algos_tests.c	/^char *all_tests(){$/;"	f
 all_tests	tests/darray_tests.c	/^RUN_TESTS(all_tests);$/;"	v
@@ -116,8 +122,11 @@ debug	src/lcthw/dbg.h	9;"	d
 element_size	src/lcthw/darray.h	/^  size_t element_size;$/;"	m	struct:DArray
 end	src/lcthw/darray.h	/^  int end;$/;"	m	struct:DArray
 end	src/lcthw/radixmap.h	/^  size_t end;$/;"	m	struct:RadixMap
+end	tests/darray_algos_tests.c	/^static clock_t start,end;$/;"	v	file:
+end	tests/radixmap_tests.c	/^static clock_t start, end;$/;"	v	file:
 expand_rate	src/lcthw/darray.h	/^  size_t expand_rate;$/;"	m	struct:DArray
 first	src/lcthw/list.h	/^  ListNode *first;$/;"	m	struct:List
+getKey	src/lcthw/radixmap.h	22;"	d
 is_sorted	tests/darray_algos_tests.c	/^int is_sorted(DArray *array){$/;"	f
 is_sorted	tests/list_algos_tests.c	/^int is_sorted(List *words){$/;"	f
 key	src/lcthw/radixmap.h	/^    uint32_t key;$/;"	m	struct:RMElement::__anon1
@@ -140,11 +149,16 @@ mu_assert	tests/minunit.h	11;"	d
 mu_run_test	tests/minunit.h	14;"	d
 mu_suite_start	tests/minunit.h	9;"	d
 next	src/lcthw/list.h	/^  struct ListNode *next;$/;"	m	struct:ListNode	typeref:struct:ListNode::ListNode
+partition	src/lcthw/radixmap.c	/^int partition(RadixMap * map,int * low, int * high){$/;"	f
 prev	src/lcthw/list.h	/^  struct ListNode *prev;$/;"	m	struct:ListNode	typeref:struct:ListNode::ListNode
+print_map	tests/radixmap_tests.c	/^static void print_map(RadixMap * map){$/;"	f	file:
 radix_sort	src/lcthw/radixmap.c	/^static inline void radix_sort(short offset, uint64_t max, uint64_t * source, uint64_t * dest){$/;"	f	file:
 raw	src/lcthw/radixmap.h	/^  uint64_t raw;$/;"	m	union:RMElement
 run_sort_test	tests/darray_algos_tests.c	/^char *run_sort_test(int (*sort_func)(DArray *,DArray_compare),const char *name){$/;"	f
 sentinel	src/lcthw/dbg.h	31;"	d
+start	tests/darray_algos_tests.c	/^static clock_t start,end;$/;"	v	file:
+start	tests/radixmap_tests.c	/^static clock_t start, end;$/;"	v	file:
+string_compare	tests/list_tests.c	/^static inline int string_compare(char *string1, char *string2){$/;"	f	file:
 temp	src/lcthw/radixmap.h	/^  RMElement *temp;$/;"	m	struct:RadixMap
 test1	tests/list_tests.c	/^char *test1 = "test1 data";$/;"	v
 test2	tests/list_tests.c	/^char *test2 = "test2 data";$/;"	v
@@ -178,6 +192,8 @@ test_unshift	tests/list_tests.c	/^char *test_unshift(){$/;"	f
 test_values	tests/list_tests.c	/^char *test_values(){$/;"	f
 testcmp	tests/darray_algos_tests.c	/^int testcmp(char **a, char **b){$/;"	f
 tests_run	tests/minunit.h	/^int tests_run;$/;"	v
+timer_end	tests/timer.h	/^static inline void timer_end(clock_t * start, clock_t * end, char * message){$/;"	f
+timer_start	tests/timer.h	/^static inline void timer_start(clock_t *start){$/;"	f
 val1	tests/darray_tests.c	/^static int *val1 = NULL;$/;"	v	file:
 val2	tests/darray_tests.c	/^static int *val2 = NULL;$/;"	v	file:
 value	src/lcthw/list.h	/^  void *value;$/;"	m	struct:ListNode
