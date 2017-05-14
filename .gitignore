@@ -1,4 +1,4 @@
-.*.sw*
+**.*.sw*
 **.o
 **.dSYM
 **/tests/*_tests
