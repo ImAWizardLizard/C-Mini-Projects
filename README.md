@@ -1,2 +1,2 @@
 # C-Learning-Projects
-Projects I have done for fun or to improve my C programming skills.
+Projects I have done for fun and to improve my C programming skills.
