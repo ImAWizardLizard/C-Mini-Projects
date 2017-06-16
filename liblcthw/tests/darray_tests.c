@@ -1,7 +1,6 @@
 #include "minunit.h"
 #include <lcthw/darray.h>
 
-
 static DArray *array = NULL;
 static int *val1 = NULL;
 static int *val2 = NULL;
@@ -46,8 +45,7 @@ char *test_get(){
   mu_assert(DArray_get(array,0) == val1, "Wrong first value.");
   mu_assert(DArray_get(array,1) == val2, "Wrong second value.");
 
-return NULL;
-}
+return NULL; }
 
 char *test_remove(){
 

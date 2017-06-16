@@ -6,6 +6,7 @@ DArray *DArray_create(size_t element_size,size_t inital_max){
 
   DArray *array = malloc(sizeof(DArray));
   check_mem(array);
+
   array->max = inital_max;
   check(array->max > 0,"Array inital max value must be > 0");
 
@@ -155,4 +156,39 @@ void *DArray_pop(DArray * array){
   return el;
 error:
   return NULL;
+}
+
+int DArray_sort_add(DArray * array,void *el,int (*sort_func)(DArray *,DArray_compare), DArray_compare cmp){
+
+  int rc = 0;
+
+  rc = DArray_push(array,el);
+  check(rc != -1, "Could not push element on to end of array");
+
+  if(array->end > 1) sort_func(array,cmp);
+
+error: //fallthrough
+  return rc;
+}
+
+int DArray_find(DArray * array, void * el, DArray_compare cmp){
+  check(array != NULL,"Array is invalid");
+
+  int low = 0, high = (array->end - 1);
+  int middle = 0;
+
+  while (low <= high){
+    middle = low + (high - low) / 2;
+
+    if(cmp(el,array->contents[middle]) < 0){
+      high = middle - 1;
+    }else if(cmp(el,array->contents[middle]) > 0){
+      low = middle + 1;
+    }else{
+      return middle;
+    }
+  }
+
+error: // fall through
+  return -1;
 }

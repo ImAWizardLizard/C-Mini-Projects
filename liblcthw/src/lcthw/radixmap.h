@@ -34,7 +34,7 @@ void RadixMap_sort(RadixMap * map,int position);
 RadixMap * RadixMap_quicksort(RadixMap * map,int low, int high);
 
 // RadixMap heapsort function
-RadixMap * RadixMap_heapsort(RadixMap * map);
+RadixMap * RadixMap_heapsort(RadixMap * map,int count);
 
 // RadixMap mergesort function
 RadixMap * RadixMap_mergesort(RadixMap *map);

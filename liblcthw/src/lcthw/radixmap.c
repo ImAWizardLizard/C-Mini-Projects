@@ -130,13 +130,48 @@ RadixMap * RadixMap_quicksort(RadixMap * map,int low, int high){
   return map;
 }
 
+/*
+static inline void heapify(RadixMap * map,int count, int i){
 
+  int largest = i;
+  int l = 2*i + 1;
+  int r = 2*i + 2;
+  RMElement temp;
 
-RadixMap * RadixMap_heapsort(RadixMap * map){
+  if(l < count && getKey(map->contents[l]) > getKey(map->contents[largest])){
+    largest = l;
+  }
 
+  if(r < count && getKey(map->contents[r]) > getKey(map->contents[largest])){
+    largest = l;
+  }
 
+  if(largest != i){
+    temp = map->contents[largest]; 
+    map->contents[largest] = map->contents[i];
+    map->contents[i] = temp;
 
+    heapify(map,count,largest);
+  }
 }
+
+RadixMap * RadixMap_heapsort(RadixMap * map,int count){
+  int i = 0;
+  RMElement temp;
+
+  for(i = count / 2 - 1; i >= 0;i--){
+    heapify(map, count, i);
+  }
+
+  for(i = count - 1; i>=0;i--){
+    temp = map->contents[0]; 
+    map->contents[0] = map->contents[i];
+    map->contents[i] = temp;
+
+    heapify(map,i,0);
+  }
+}
+*/
 
 static inline RadixMap *RadixMap_merge(RadixMap * left,RadixMap * right){
   RadixMap * result = RadixMap_create(left->max);

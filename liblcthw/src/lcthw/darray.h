@@ -1,9 +1,10 @@
 #ifndef _Darray_h
 #define _Darray_h
-#include <stdlib.h>
+
 #include <assert.h>
 #include <lcthw/dbg.h>
-
+#include <stdlib.h>
+#include <bsd/stdlib.h>
 
 typedef struct DArray{
   int end;
@@ -14,6 +15,8 @@ typedef struct DArray{
 
 
 } DArray;
+
+typedef int (*DArray_compare)(const void *a,const void *b);
 
 DArray *DArray_create(size_t element_size, size_t initial_max);
 
@@ -29,6 +32,10 @@ int DArray_push(DArray * array, void *el);
 
 void *DArray_pop(DArray * array);
 
+int DArray_sort_add(DArray * array,void *el,int (*sort_func)(DArray *,DArray_compare), DArray_compare cmp);
+
+int DArray_find(DArray * array,void *el,DArray_compare cmp);
+
 void DArray_clear_destroy(DArray * array);
 
 #define DArray_last(A) ((A)->contents[(A)->end -1])
@@ -36,6 +43,7 @@ void DArray_clear_destroy(DArray * array);
 #define DArray_end(A) ((A)->end)
 #define DArray_count(A) DArray_end(A)
 #define DArray_max(A) ((A)->max)
+#define DArray_free(E) free((E))
 
 #define DEFAULT_EXPAND_RATE 300
 
@@ -87,6 +95,30 @@ error:
   return NULL;
 }
 
-#define DArray_free(E) free((E))
+static inline int DArray_qsort(DArray * array, DArray_compare cmp){
+  check(array != NULL,"Array is invalid.");
+  qsort(array->contents,DArray_count(array),sizeof(void *),cmp);
+  return 0;
+error:
+  return -1;
+}
+
+static inline int DArray_heapsort(DArray * array, DArray_compare cmp){
+  check(array != NULL,"Array is invalid.");
+
+  int rc = -1;
+  rc = heapsort(array->contents,DArray_count(array),sizeof(void *),cmp);
+
+error: // fallthrough
+  return rc;
+}
+
+static inline int DArray_mergesort(DArray * array, DArray_compare cmp){
+  int rc = -1;
+  check(array != NULL,"Array is invalid.");
+  rc = mergesort(array->contents,DArray_count(array),sizeof(void *),cmp);
+error: //fallthrough
+  return rc;
+}
 
 #endif

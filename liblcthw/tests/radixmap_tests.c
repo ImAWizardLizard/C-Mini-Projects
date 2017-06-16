@@ -116,29 +116,48 @@ static char *test_operations(){
   // Sorting the map
   timer_start(&start);
   sorted_map = RadixMap_quicksort(quicksort_map,0,quicksort_map->end - 1);
-  mu_assert(sorted_map != NULL, "Failed to properly sort the radix map");
+  mu_assert(sorted_map != NULL, "Failed to properly sort the quicksort map");
   timer_end(&start,&end,"sorting the map using quicksort");
 
   // Checking the order
   timer_start(&start);
-  mu_assert(check_order(sorted_map),"Failed to properly sort radix map");
+  mu_assert(check_order(sorted_map),"Failed to properly sort quicksort map");
   timer_end(&start,&end,"checking the order");
 
   /////////// Time sorting the list using quicksort ///////////
 
   printf("\n");
 
+  /*
+  /////////// Time sorting the list using heapsort ///////////
+  
+  // Sorting the map
+  timer_start(&start);
+  RadixMap_heapsort(heapsort_map, heapsort_map->end);
+  mu_assert(heapsort_map != NULL, "Failed to properly sort the heaposrt map");
+  timer_end(&start,&end,"sorting the map using heapsort");
+
+  // Checking the order
+  timer_start(&start);
+  mu_assert(check_order(heapsort_map),"Failed to properly sort heapsort map");
+  timer_end(&start,&end,"checking the order");
+
+  /////////// Time sorting the list using heapsort ///////////
+  //
+  printf("\n");
+
   ////////// Time sorting the list using mergesort ///////////
+  */
   
   // Sorting the map
   timer_start(&start);
   sorted_map = RadixMap_mergesort(mergesort_map);
-  mu_assert(sorted_map != NULL, "Failed to properly sort the radix map");
+  mu_assert(sorted_map != NULL, "Failed to properly sort the mergesort map");
   timer_end(&start,&end,"sorting the map using mergesort");
 
   // Checking the order
   timer_start(&start);
-  mu_assert(check_order(sorted_map),"Failed to properly sort radix map");
+  mu_assert(check_order(sorted_map),"Failed to properly sort mergesort map");
   timer_end(&start,&end,"checking the order");
 
   ////////// Time sorting the list using mergesort ///////////
