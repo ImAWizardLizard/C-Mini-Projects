@@ -1,2 +1,2 @@
-# C-Learning-Projects
-Projects I have completed whilst learning C through Zed Shaws "Learn C the Hard Way" book
+# C-Mini-Projects
+Projects I have done for fun and to improve my C programming skills.
