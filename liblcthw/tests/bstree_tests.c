@@ -15,7 +15,8 @@ struct tagbstring expected1 = bsStatic("test data 1");
 struct tagbstring expected2 = bsStatic("test data 2");
 struct tagbstring expected3 = bsStatic("test data 3");
 
-static int traverse_good_cb(BSTreeNode * node){ printf("KEY: %s\n",bdata((bstring) node->key));
+static int traverse_good_cb(BSTreeNode * node){ 
+  printf("KEY: %s\n",bdata((bstring) node->key));
   traverse_called++;
   return 0;
 }

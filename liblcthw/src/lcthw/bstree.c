@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <lcthw/bstree.h>
 #include <lcthw/bstrlib.h>
+#include <lcthw/list.h>
 
 static int default_compare(void * a, void * b){
   return bstrcmp((bstring) a, (bstring) b);
@@ -50,8 +51,33 @@ static inline void BSTree_setnode(BSTree * map, BSTreeNode * node, void * key, v
   check(map != NULL, "The map is invalid");
   check(node != NULL,"The node is invalid");
 
-  int cmp = map->compare(node->key,key);
+  int cmp = 0;
+  //int cmp = map->compare(node->key,key);
 
+  // Iterative Method - Better
+  while(node != NULL){
+    cmp = map->compare(node->key,key);
+    if(cmp <= 0){
+       if(node->left){
+           node = node->left; 
+       }else{
+           node->left = BSTreeNode_create(node,key,data);
+           break;
+       }
+    }else{
+        if(node->right){
+           node = node->right; 
+        }else{
+          node->right = BSTreeNode_create(node,key,data);
+          break;
+        }
+    }
+  }
+
+
+
+  // Recursive method - Possible to stack overflow attacks
+  /*
   if(cmp <= 0){
     if(node->left){
       BSTree_setnode(map,node->left,key,data);
@@ -65,7 +91,7 @@ static inline void BSTree_setnode(BSTree * map, BSTreeNode * node, void * key, v
       node->right = BSTreeNode_create(node,key,data);
     }
   }
-
+  */
 error:
   return;
 }
@@ -90,9 +116,32 @@ static inline BSTreeNode * BSTree_getnode(BSTree * map, BSTreeNode * node, void 
   check(map != NULL, "The map is invalid");
   check(node != NULL,"The node is invalid");
 
-  int cmp = map->compare(node->key,key);
+  int cmp = 0;
+  //int cmp = map->compare(node->key,key);
 
-  if(cmp == 0){
+  // Iterative
+  while(node != NULL){
+      cmp = map->compare(node->key,key);
+      if(cmp == 0){
+        return node;
+      }else if(cmp < 0){
+        if(node->left){
+          node = node->left;
+        }else{
+          return NULL;
+        }
+      }else{
+        if(node->right){
+          node = node->right;
+        }else{
+          return NULL;
+        }
+      }
+  }
+
+
+  // Recursive
+  /*if(cmp == 0){
     return node;
   }else if(cmp < 0){
     if(node->left){
@@ -100,13 +149,13 @@ static inline BSTreeNode * BSTree_getnode(BSTree * map, BSTreeNode * node, void 
     }else{
       return NULL;
     }
-  }else if(cmp > 0){
+  }else{
     if(node->right){
      return  BSTree_getnode(map, node->right,key);
     }else{
       return NULL;
     }
-  }
+  }*/
 
 error:
   return NULL;
@@ -130,9 +179,35 @@ error:
 static inline int BSTree_traverse_nodes(BSTreeNode *node, BSTree_traverse_cb traverse_cb){
   check(node != NULL, "Node is invalid");
   check(traverse_cb != NULL, "traverse_cb is invalid");
+
+  List * stack = List_create();
+  int done = 0;
   int rc = 0;
 
-  if(node->left){
+
+  // Iterative
+  
+  while(!done){
+    if(node != NULL){
+        List_push(stack,node);
+        node = node->left;
+    }else{
+        if(List_count(stack) > 0){
+            node = List_pop(stack);
+            rc = traverse_cb(node);
+            if(rc != 0) return rc;
+            node = node->right;
+        }else{
+            done = 1;
+        }
+    }
+  }
+
+  return rc;
+  
+
+  // Recursive
+  /*if(node->left){
     rc = BSTree_traverse_nodes(node->left,traverse_cb);
     if(rc != 0) return rc;
   }
@@ -142,7 +217,7 @@ static inline int BSTree_traverse_nodes(BSTreeNode *node, BSTree_traverse_cb tra
     if(rc != 0) return rc;
   }
 
-  return traverse_cb(node);
+  return traverse_cb(node);*/
 error:
  return -1; 
 }
@@ -157,14 +232,21 @@ int BSTree_traverse(BSTree * map, BSTree_traverse_cb traverse_cb){
   
 error:
   return 0;
-
 }
 
 static inline BSTreeNode * BSTree_find_min(BSTreeNode * node){
-  while(node->left){
-    node = node->left;
-  }
-  return node;
+    // Iterative 
+    while(node->left){
+        node = node->left;
+    }
+
+
+    // Recursive
+    /*if(node->left){
+        node = BSTree_find_min(node->left);
+    }*/
+
+    return node;
 }
 
 static inline void BSTree_replace_node_in_parent(BSTree * map,
@@ -190,21 +272,65 @@ static inline void BSTree_replace_node_in_parent(BSTree * map,
 
 static inline void BSTree_swap(BSTreeNode * a, BSTreeNode * b){
   void * temp = NULL;
-
+    
+  // Swap keys
   temp = b->key;
   b->key = a->key;
-  a->key = b->key;
+  a->key = temp;
 
+  // Swap data
   temp = b->data;
   b->data = a->data;
-  a->data = b->data;
+  a->data = temp;
 }
 
 static inline BSTreeNode * BSTree_node_delete(BSTree * map, BSTreeNode * node, void * key){
-  
-  int cmp = map->compare(node->key, key);
+  int cmp = 0;  
+  //int cmp = map->compare(node->key, key);
 
-  if(cmp < 0){
+  // Iterative
+  while(node != NULL){
+      cmp = map->compare(node->key, key);
+
+      if(cmp < 0){
+        if(node->left){
+            node = node->left;
+        }else{
+          return NULL;
+        }
+      }else if(cmp > 0){
+        if(node->right){
+          node = node->right;
+        }else{
+          return NULL;
+        }
+      }else{
+        if(node->left && node->right){
+          BSTreeNode * successor = BSTree_find_min(node->right);
+          // Swap this node for the lower node bigger than us
+          BSTree_swap(successor,node);
+
+          // Old success could possibly have a right child, so therefore replace it
+          // with that of right child
+          BSTree_replace_node_in_parent(map,successor,successor->right);
+
+          return successor;
+        }else if(node->left){
+          BSTree_replace_node_in_parent(map,node,node->left);
+        }else if(node->right){
+          BSTree_replace_node_in_parent(map,node,node->right);
+        }else{
+          BSTree_replace_node_in_parent(map,node,NULL);
+        }
+
+        return node;
+      }
+
+  }
+
+
+  // Recursive
+  /*if(cmp < 0){
     if(node->left){
       return BSTree_node_delete(map,node->left,key);
     }else{
@@ -237,6 +363,7 @@ static inline BSTreeNode * BSTree_node_delete(BSTree * map, BSTreeNode * node, v
 
     return node;
   }
+  */
 }
 
 void * BSTree_delete(BSTree * map, void * key){
